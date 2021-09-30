@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cost Estimator</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="body">
+        <div class="tab-container" id="tab-container">
+          <div class="tab tab-active" id="tab0">High Rise</div>
+          <div class="tab" id="tab1">Plotting</div>
+          <div class="tab" id="tab2">Exteriors</div>
+        </div>
+        <div class="tab-body tab-body-active" id="tab0-body">
+          <div class="item">
+            <div class="title">Apartment Interiors</div>
+            <div class="input-container">
+              <input class="input" type="number" id="hr_interiors" />
+              <span class="unit">Sq.ft</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="title">Exteriors</div>
+            <div class="input-container">
+              <input class="input" type="number" id="hr_exteriors" />
+              <span class="unit">Sq.ft</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="title">Indoor Amenities</div>
+            <div class="input-container">
+              <input class="input" type="number" id="hr_indoor" />
+              <span class="unit">Sq.ft</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-body" id="tab1-body">
+          <div class="item">
+            <div class="title">Elevation and Interior</div>
+            <div class="input-container">
+              <input class="input" type="number" id="plt_elevation" />
+              <span class="unit">Sq.ft</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-body" id="tab2-body">
+          <div class="item">
+            <div class="title">Exteriors</div>
+            <div class="input-container">
+              <input class="input" type="number" id="ex_exteriors" />
+              <span class="unit">Sq.ft</span>
+            </div>
+          </div>
+        </div>
+        <div class="total-container">
+          <span class="title">Total</span>
+          <span class="value" id="overall_total">0 &#x20b9;</span>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js" async defer></script>
+  </body>
+</html>

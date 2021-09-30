@@ -1,0 +1,122 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+  --clr-light-blue: #9ed0f1;
+  --clr-primary: #47a1df;
+  --clr-primary-darker: #3b86b8;
+  --clr-secondary: #e0346a;
+  --clr-secondary-faded: #f8e2e2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--clr-light-blue);
+}
+
+.body {
+  background-color: var(--clr-primary);
+  color: white;
+  min-width: 300px;
+  height: 500px;
+  /* height: fit-content; */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: fit-content;
+}
+
+.tab {
+  background-color: white;
+  color: black;
+  height: fit-content;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+}
+
+.tab:hover {
+  background-color: var(--clr-secondary-faded);
+}
+
+.tab-active {
+  background-color: var(--clr-secondary);
+  color: white;
+  cursor: default;
+}
+
+.tab-active:hover {
+  background-color: var(--clr-secondary);
+}
+
+.tab-body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-primary);
+  padding: 2rem 1rem;
+  display: none;
+}
+
+.tab-body-active {
+  display: block;
+}
+
+.item {
+  margin: 1rem 0;
+}
+
+.item .title {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.item .input-container {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.item .input-container .input {
+  border: none;
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
+.item .input-container .unit {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: fit-content;
+  background-color: #4485b1;
+  padding: 4px;
+  font-size: 0.9rem;
+  border: 2px solid #4485b1;
+}
+
+.total-container {
+  margin: 2rem 1rem;
+  padding: 1rem;
+  border: 2px solid var(--clr-primary-darker);
+}
+
+.total-container .value {
+  margin: 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
