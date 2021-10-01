@@ -3,8 +3,8 @@
 
 :root {
   --clr-light-blue: #9ed0f1;
-  --clr-primary: #47a1df;
-  --clr-primary-darker: #3b86b8;
+  --clr-primary: #56b5f5;
+  --clr-primary-darker: #4e9acc;
   --clr-secondary: #e0346a;
   --clr-secondary-faded: #f8e2e2;
 }
@@ -20,24 +20,30 @@
   display: flex;
   width: 100%;
   height: 100vh;
+  justify-content: center;
   background-color: var(--clr-light-blue);
 }
 
 .body {
   background-color: var(--clr-primary);
   color: white;
-  min-width: 300px;
-  height: 500px;
+  width: 100%;
+  max-width: 500px;
+  height: fit-content;
+  max-height: 100vh;
   /* height: fit-content; */
-  margin: auto;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  /* padding-bottom: 2rem; */
 }
 
 .tab-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: fit-content;
+  position: sticky;
+  top: 0;
 }
 
 .tab {
@@ -68,8 +74,9 @@
   width: 100%;
   height: 100%;
   background-color: var(--clr-primary);
-  padding: 2rem 1rem;
   display: none;
+  padding: 1rem 0;
+  overflow: auto;
 }
 
 .tab-body-active {
@@ -78,6 +85,8 @@
 
 .item {
   margin: 1rem 0;
+  padding: 1rem;
+  box-shadow: 0px 0.5px 2px 1px rgba(16, 11, 92, 0.277);
 }
 
 .item .title {
@@ -109,14 +118,65 @@
   border: 2px solid #4485b1;
 }
 
+.item .flat-types {
+  margin: 1rem 0;
+  /* max-height: 20vh; */
+  /* overflow: auto; */
+}
+
+.item .flat-types .flat-type {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item .flat-types .flat-type-title {
+  font-size: 0.9rem;
+  padding: 5px 0;
+}
+
+.item .flat-types .new-btn {
+  border: none;
+  color: var(--clr-secondary-faded);
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0rem 0rem;
+}
+
+.item .flat-types .new-btn:hover {
+  color: var(--clr-secondary);
+}
+
 .total-container {
-  margin: 2rem 1rem;
   padding: 1rem;
   border: 2px solid var(--clr-primary-darker);
+  border-radius: 5px;
+  color: white;
+  background-color: var(--clr-primary-darker);
+  width: 100%;
 }
 
 .total-container .value {
   margin: 0 1rem;
   font-size: 1.3rem;
   font-weight: 500;
+}
+
+.tab-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.tab-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.tab-body::-webkit-scrollbar-thumb {
+  background: var(--clr-primary-darker);
+}
+
+/* Handle on hover */
+.tab-body::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

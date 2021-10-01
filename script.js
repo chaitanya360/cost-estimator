@@ -1,16 +1,21 @@
 const tabContainer = document.getElementById("tab-container");
 let intervalId;
 let olderValue;
+let flatTypesCount = 1;
 
 const getElement = (id) => document.getElementById(id);
 const totalElement = getElement("overall_total");
+const newBtn = getElement("new-btn");
+const flatTypes = getElement("flat-types");
+const flatType = getElement("flat-type");
+
+// hr-interiors-1 hr_interiors-2 are two inputs for different types
 
 const inputs = [
   {
-    id: "hr_interiors",
-    element: getElement("hr_interiors"),
+    id: "hr_interiors-1",
+    element: getElement("hr_interiors_1"),
   },
-
   {
     id: "hr_exterirors",
     element: getElement("hr_exteriors"),
@@ -76,7 +81,6 @@ const onTabSelect = (e) => {
 };
 
 const handleInputValueChange = () => {
-  console.log(inputValues);
   let total = 0;
   Object.keys(inputValues).forEach((key, idx) => {
     value = inputValues[key];
@@ -87,8 +91,6 @@ const handleInputValueChange = () => {
 };
 
 const onInputFocusIn = (input) => {
-  console.log(input.id);
-
   intervalId = setInterval(() => {
     let value = input.element.value;
     if (value != olderValue) {
@@ -99,10 +101,34 @@ const onInputFocusIn = (input) => {
   }, 100);
 };
 
-tabContainer.addEventListener("click", onTabSelect);
-console.log(inputs[0].element);
+const addNewFlatType = () => {
+  let clone = flatType.cloneNode(true);
+  let flatTypesInputs = clone.getElementsByTagName("input");
+  let newTitle = clone.getElementsByClassName("flat-type-title")[0];
+  let newInput = flatTypesInputs[0];
 
-inputs.forEach((input) => {
-  input.element.addEventListener("focusin", () => onInputFocusIn(input));
-  input.element.addEventListener("focusout", () => clearInterval(intervalId));
-});
+  flatTypesCount++;
+  let newId = `hr_interiors_${flatTypesCount}`;
+  inputs.push({
+    id: newId,
+    element: newInput,
+  });
+  newInput.id = newId;
+  newInput.value = "";
+  newTitle.innerHTML = `Flat Type ${flatTypesCount}`;
+  flatTypes.append(clone);
+  addListenersForInputs();
+};
+
+tabContainer.addEventListener("click", onTabSelect);
+
+const addListenersForInputs = () => {
+  inputs.forEach((input) => {
+    input.element.addEventListener("focusin", () => onInputFocusIn(input));
+    input.element.addEventListener("focusout", () => clearInterval(intervalId));
+  });
+};
+
+addListenersForInputs();
+
+newBtn.addEventListener("click", addNewFlatType);
