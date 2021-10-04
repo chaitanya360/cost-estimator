@@ -11,9 +11,41 @@ const flatType = getElement("flat-type");
 
 // hr-interiors-1 hr_interiors-2 are two inputs for different types
 
+// hr -> highrise
+// plt -> row-housing
+// ex -> builder floors
+
+const totals = {
+  hr_interiors_total: {
+    element: getElement("hr_interiors_total"),
+    unitCost: 80,
+    value: 0,
+  },
+  hr_exterirors_total: {
+    element: getElement("hr_exteriors_total"),
+    value: 0,
+    unitCost: 1,
+  },
+  hr_indoor_total: {
+    element: getElement("hr_indoor_total"),
+    value: 0,
+    unitCost: 20,
+  },
+  plt_elevation_total: {
+    element: getElement("plt_elevation_total"),
+    value: 0,
+    unitCost: 100,
+  },
+  ex_exteriors_total: {
+    element: getElement("ex_exteriors_total"),
+    value: 0,
+    unitCost: 0.5,
+  },
+};
+
 const inputs = [
   {
-    id: "hr_interiors-1",
+    id: "hr_interiors_1",
     element: getElement("hr_interiors_1"),
   },
   {
@@ -80,10 +112,38 @@ const onTabSelect = (e) => {
   handleTabClicked(clickedTabId);
 };
 
-const handleInputValueChange = () => {
-  let total = 0;
-  Object.keys(inputValues).forEach((key, idx) => {
+const updateTotals = () => {
+  let hr_interiors_total = 0;
+  Object.keys(inputValues).forEach((key) => {
+    // console.log(key);
     value = inputValues[key];
+
+    if (key.includes("hr_interiors")) {
+      if (Number.isNaN(value)) value = 0;
+      hr_interiors_total += value;
+    } else {
+      if (Number.isNaN(value)) value = 0;
+      totals[`${key}_total`].value = value * totals[`${key}_total`].unitCost;
+      totals[`${key}_total`].element.innerHTML =
+        value * totals[`${key}_total`].unitCost + " &#x20b9;";
+    }
+
+    // console.log(totals[`${key}_total`]);
+  });
+
+  hr_interiors_total *= totals["hr_interiors_total"].unitCost;
+  totals["hr_interiors_total"].value = hr_interiors_total;
+  totals[
+    "hr_interiors_total"
+  ].element.innerHTML = `${hr_interiors_total}  &#x20b9; `;
+};
+
+const handleInputValueChange = () => {
+  updateTotals();
+
+  let total = 0;
+  Object.keys(totals).forEach((key) => {
+    value = totals[key].value;
     if (!Number.isNaN(value)) total += value;
   });
 
@@ -91,6 +151,7 @@ const handleInputValueChange = () => {
 };
 
 const onInputFocusIn = (input) => {
+  olderValue = NaN;
   intervalId = setInterval(() => {
     let value = input.element.value;
     if (value != olderValue) {

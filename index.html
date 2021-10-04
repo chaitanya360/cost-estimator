@@ -16,15 +16,17 @@
     <div class="wrapper">
       <div class="body">
         <div class="tab-container" id="tab-container">
-          <div class="tab tab-active" id="tab0">High Rise</div>
-          <div class="tab" id="tab1">Plotting</div>
-          <div class="tab" id="tab2">Exteriors</div>
+          <div class="tab tab-active" id="tab0">Highrise</div>
+          <div class="tab" id="tab1">Row-housing</div>
+          <div class="tab" id="tab2">Builder Floors</div>
         </div>
         <div class="tab-body tab-body-active" id="tab0-body">
           <div class="item">
-            <div class="title">Apartment Interiors</div>
+            <div class="title">
+              Apartment Interiors ( 80 &#x20b9; per sq.ft )
+            </div>
+            <button class="new-btn" id="new-btn">+ New Flat Type</button>
             <div class="flat-types" id="flat-types">
-              <button class="new-btn" id="new-btn">+ New Flat Type</button>
               <div class="flat-type" id="flat-type">
                 <div class="flat-type-title">Flat Type 1</div>
                 <div class="input-container">
@@ -33,37 +35,58 @@
                 </div>
               </div>
             </div>
+            <div class="total">
+              Total
+              <span class="value" id="hr_interiors_total">0 &#x20b9;</span>
+            </div>
           </div>
           <div class="item">
-            <div class="title">Exteriors</div>
+            <div class="title">Exteriors ( 1 &#x20b9; per sq.ft )</div>
             <div class="input-container">
               <input class="input" type="number" id="hr_exteriors" />
               <span class="unit">Sq.ft</span>
             </div>
+            <div class="total">
+              Total
+              <span class="value" id="hr_exteriors_total">0 &#x20b9;</span>
+            </div>
           </div>
           <div class="item">
-            <div class="title">Indoor Amenities</div>
+            <div class="title">Indoor Amenities ( 20 &#x20b9; per sq.ft )</div>
             <div class="input-container">
               <input class="input" type="number" id="hr_indoor" />
               <span class="unit">Sq.ft</span>
+            </div>
+            <div class="total">
+              Total <span class="value" id="hr_indoor_total">0 &#x20b9;</span>
             </div>
           </div>
         </div>
         <div class="tab-body" id="tab1-body">
           <div class="item">
-            <div class="title">Elevation and Interior</div>
+            <div class="title">
+              Elevation and Interior ( 100 &#x20b9; per sq.ft )
+            </div>
             <div class="input-container">
               <input class="input" type="number" id="plt_elevation" />
               <span class="unit">Sq.ft</span>
+            </div>
+            <div class="total">
+              Total
+              <span class="value" id="plt_elevation_total">0 &#x20b9;</span>
             </div>
           </div>
         </div>
         <div class="tab-body" id="tab2-body">
           <div class="item">
-            <div class="title">Exteriors</div>
+            <div class="title">Exteriors ( 0.5 &#x20b9; per sq.ft )</div>
             <div class="input-container">
               <input class="input" type="number" id="ex_exteriors" />
               <span class="unit">Sq.ft</span>
+            </div>
+            <div class="total">
+              Total
+              <span class="value" id="ex_exteriors_total">0 &#x20b9;</span>
             </div>
           </div>
         </div>

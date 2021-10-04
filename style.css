@@ -39,17 +39,15 @@
 }
 
 .tab-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: fit-content;
-  position: sticky;
-  top: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
 }
 
 .tab {
-  background-color: white;
+  flex: 1;
   color: black;
-  height: fit-content;
   cursor: pointer;
   text-align: center;
   font-size: 1.1rem;
@@ -135,7 +133,7 @@
   padding: 5px 0;
 }
 
-.item .flat-types .new-btn {
+.item .new-btn {
   border: none;
   color: var(--clr-secondary-faded);
   background-color: transparent;
@@ -143,8 +141,12 @@
   margin: 0rem 0rem;
 }
 
-.item .flat-types .new-btn:hover {
+.item .new-btn:hover {
   color: var(--clr-secondary);
+}
+
+.item .total {
+  margin-top: 1rem;
 }
 
 .total-container {
