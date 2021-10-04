@@ -18,8 +18,8 @@ const flatType = getElement("flat-type");
 const totals = {
   hr_interiors_total: {
     element: getElement("hr_interiors_total"),
-    unitCost: 80,
     value: 0,
+    unitCost: 80,
   },
   hr_exterirors_total: {
     element: getElement("hr_exteriors_total"),
@@ -43,6 +43,20 @@ const totals = {
   },
 };
 
+const tabTotals = {
+  hr_total: {
+    element: getElement("hr_total"),
+    value: 0,
+  },
+  plt_total: {
+    element: getElement("plt_total"),
+    value: 0,
+  },
+  ex_total: {
+    element: getElement("ex_total"),
+    value: 0,
+  },
+};
 const inputs = [
   {
     id: "hr_interiors_1",
@@ -138,9 +152,21 @@ const updateTotals = () => {
   ].element.innerHTML = `${hr_interiors_total}  &#x20b9; `;
 };
 
-const handleInputValueChange = () => {
-  updateTotals();
+const updateTabsTotal = () => {
+  tabTotals["hr_total"].value =
+    totals["hr_exterirors_total"].value +
+    totals["hr_indoor_total"].value +
+    totals["hr_interiors_total"].value;
+  tabTotals["plt_total"].value = totals["plt_elevation_total"].value;
+  tabTotals["ex_total"].value = totals["ex_exteriors_total"].value;
 
+  Object.keys(tabTotals).forEach(
+    (key) =>
+      (tabTotals[key].element.innerHTML = tabTotals[key].value + " &#x20b9;")
+  );
+};
+
+const updateOverAllTotal = () => {
   let total = 0;
   Object.keys(totals).forEach((key) => {
     value = totals[key].value;
@@ -148,6 +174,11 @@ const handleInputValueChange = () => {
   });
 
   totalElement.innerHTML = total + " &#x20b9;";
+};
+const handleInputValueChange = () => {
+  updateTotals();
+  updateTabsTotal();
+  updateOverAllTotal();
 };
 
 const onInputFocusIn = (input) => {

@@ -6,7 +6,8 @@
   --clr-primary: #56b5f5;
   --clr-primary-darker: #4e9acc;
   --clr-secondary: #e0346a;
-  --clr-secondary-faded: #f8e2e2;
+  --clr-secondary-faded: #f8aeae;
+  --clr-brown: #443838;
 }
 
 * {
@@ -97,6 +98,7 @@
   width: fit-content;
   overflow: hidden;
   border-radius: 3px;
+  display: inline-block;
 }
 
 .item .input-container .input {
@@ -134,9 +136,11 @@
 }
 
 .item .new-btn {
-  border: none;
-  color: var(--clr-secondary-faded);
-  background-color: transparent;
+  border: 1px solid var(--clr-primary-darker);
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--clr-brown);
+  background-color: var(--clr-light-blue);
   cursor: pointer;
   margin: 0rem 0rem;
 }
@@ -146,7 +150,25 @@
 }
 
 .item .total {
-  margin-top: 1rem;
+  display: inline-block;
+  margin: 1rem;
+}
+
+.item .total .value {
+  background-color: var(--clr-primary-darker);
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.tab-body .tab-total {
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: var(--clr-primary-darker);
+}
+
+.tab-body .tab-total span {
+  font-weight: 700;
+  margin-left: 1rem;
+  font-size: 1.3rem;
 }
 
 .total-container {
@@ -154,7 +176,7 @@
   border: 2px solid var(--clr-primary-darker);
   border-radius: 5px;
   color: white;
-  background-color: var(--clr-primary-darker);
+  background-color: var(--clr-secondary);
   width: 100%;
 }
 
