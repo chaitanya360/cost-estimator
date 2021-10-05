@@ -1,6 +1,5 @@
 const tabContainer = document.getElementById("tab-container");
 let intervalId;
-let olderValue;
 let flatTypesCount = 1;
 
 const getElement = (id) => document.getElementById(id);
@@ -182,14 +181,11 @@ const handleInputValueChange = () => {
 };
 
 const onInputFocusIn = (input) => {
-  olderValue = NaN;
   intervalId = setInterval(() => {
     let value = input.element.value;
-    if (value != olderValue) {
-      inputValues[input.id] = parseInt(value);
-      olderValue = value;
-      handleInputValueChange();
-    }
+    inputValues[input.id] = parseInt(value);
+    olderValue = value;
+    handleInputValueChange();
   }, 100);
 };
 
