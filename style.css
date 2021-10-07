@@ -3,11 +3,10 @@
 
 :root {
   --clr-light-blue: #9ed0f1;
-  --clr-primary: #56b5f5;
-  --clr-primary-darker: #4e9acc;
-  --clr-secondary: #e0346a;
-  --clr-secondary-faded: #f8aeae;
+  --clr-primary: #e0346a;
+  --clr-secondary: #f3f3f3;
   --clr-brown: #443838;
+  --crl-light-ping: #f6ecea;
 }
 
 * {
@@ -16,22 +15,23 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+body {
+  background-color: var(--crl-light-ping);
+}
 
 .wrapper {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  max-width: 600px;
   height: 100vh;
   justify-content: center;
-  background-color: var(--clr-light-blue);
 }
 
 .body {
-  background-color: var(--clr-primary);
-  color: white;
+  color: black;
   width: 100%;
-  max-width: 500px;
   height: fit-content;
-  max-height: 100vh;
+  max-height: 90vh;
   /* height: fit-content; */
   display: flex;
   flex-direction: column;
@@ -43,54 +43,74 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: white;
+  background-color: var(--clr-secondary);
+  border-radius: 5px;
 }
 
 .tab {
   flex: 1;
-  color: black;
+  color: rgb(85, 80, 80);
   cursor: pointer;
   text-align: center;
   font-size: 1.1rem;
   padding: 5px 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  /* border-top: 3px solid transparent; */
+  border-bottom: 3px solid var(--clr-primary);
+  border-radius: 5px 5px 0 0;
+  transition: border 100ms linear;
 }
 
 .tab:hover {
-  background-color: var(--clr-secondary-faded);
+  background-color: var(--crl-light-ping);
 }
 
 .tab-active {
-  background-color: var(--clr-secondary);
-  color: white;
+  color: var(--clr-primary);
+  background-color: white;
+  border: 3px solid var(--clr-primary);
+  border-bottom: none;
   cursor: default;
 }
 
 .tab-active:hover {
-  background-color: var(--clr-secondary);
+  background-color: white;
 }
 
 .tab-body {
   width: 100%;
   height: 100%;
-  background-color: var(--clr-primary);
   display: none;
   padding: 1rem 0;
   overflow: auto;
+  background-color: #ffffff;
+  border: 3px solid var(--clr-primary);
+  border-bottom: none;
+  border-top: none;
+  position: relative;
 }
 
 .tab-body-active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item {
-  margin: 1rem 0;
+  margin: 1rem;
   padding: 1rem;
   box-shadow: 0px 0.5px 2px 1px rgba(16, 11, 92, 0.277);
+  border-radius: 5px;
 }
 
 .item .title {
   font-size: 1rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .item .input-container {
@@ -105,6 +125,9 @@
   border: none;
   font-size: 1rem;
   padding: 5px 10px;
+  background-color: var(--clr-secondary);
+  border: 1px solid black;
+  border-radius: 4px 0 0 4px;
 }
 
 .item .input-container .unit {
@@ -112,10 +135,12 @@
   right: 0px;
   height: 100%;
   width: fit-content;
-  background-color: #4485b1;
-  padding: 4px;
+  background-color: #90bfdf;
+  padding: 5px;
   font-size: 0.9rem;
-  border: 2px solid #4485b1;
+  border: 1px solid black;
+  border-radius: 2px;
+  border-left: none;
 }
 
 .item .flat-types {
@@ -141,17 +166,23 @@
   border-radius: 5px;
   color: var(--clr-brown);
   background-color: var(--clr-light-blue);
+  font-weight: 500;
   cursor: pointer;
   margin: 0rem 0rem;
 }
 
 .item .new-btn:hover {
-  color: var(--clr-secondary);
+  background-color: #90bfdf;
 }
 
 .item .total {
-  display: inline-block;
+  display: block;
   margin: 1rem;
+  background-color: var(--crl-light-ping);
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 2px rgba(146, 142, 142, 0.767);
+  float: right;
 }
 
 .item .total .value {
@@ -162,21 +193,24 @@
 .tab-body .tab-total {
   padding: 1rem;
   font-size: 1rem;
-  background-color: var(--clr-primary-darker);
+  background-color: var(--clr-light-blue);
+  border-radius: 5px;
+  height: fit-content;
+  position: sticky;
+  bottom: -1rem;
 }
 
 .tab-body .tab-total span {
-  font-weight: 700;
+  font-weight: 600;
   margin-left: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .total-container {
   padding: 1rem;
   border: 2px solid var(--clr-primary-darker);
-  border-radius: 5px;
   color: white;
-  background-color: var(--clr-secondary);
+  background-color: var(--clr-primary);
   width: 100%;
 }
 
@@ -187,7 +221,7 @@
 }
 
 .tab-body::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
@@ -197,7 +231,7 @@
 
 /* Handle */
 .tab-body::-webkit-scrollbar-thumb {
-  background: var(--clr-primary-darker);
+  background: var(--clr-light-blue);
 }
 
 /* Handle on hover */

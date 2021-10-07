@@ -122,7 +122,8 @@ const handleTabClicked = (clickedTabId) => {
 
 const onTabSelect = (e) => {
   const clickedTabId = e.target.id;
-  handleTabClicked(clickedTabId);
+  if (tabs.find((tab) => tab.id === clickedTabId))
+    handleTabClicked(clickedTabId);
 };
 
 const updateTotals = () => {
